@@ -1,9 +1,6 @@
 package com.rajendra.onlineproductsapp;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.database.Cursor;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Intent;
 import android.os.Bundle;
@@ -47,46 +44,20 @@ import android.widget.Button;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RegistrationActivity extends AppCompatActivity {
-    private Button register;
-    EditText usrname, email, pass;
-    DBHelper DB;
+public class Admin extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
+        setContentView(R.layout.admin_board);
 
-        usrname = findViewById(R.id.InputUsername);
-        email = findViewById(R.id.InputEmail);
-        pass = findViewById(R.id.InputPassword);
-
-        DB = new DBHelper(this);
-        register = (Button) findViewById(R.id.SignUpButton);
-
-        TextView btn = findViewById(R.id.AlreadyhaveAccount);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
-            }
-        });
-
-        //when click register
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String usrnameTXT = usrname.getText().toString();
-                String emailTXT = email.getText().toString();
-                String passTXT = pass.getText().toString();
-
-                Boolean checkinsertdata = DB.insertuserdata(usrnameTXT, emailTXT, passTXT);
-                if (checkinsertdata == true) {
-                    Toast.makeText(RegistrationActivity.this, "Account Registered", Toast.LENGTH_SHORT).show();
-
-                } else {
-                    Toast.makeText(RegistrationActivity.this, "Entry Not Registered", Toast.LENGTH_SHORT).show();
-                }
+        //clicks on userdetail
+        Button button1 = (Button)findViewById(R.id.usrdtlbtn);
+        button1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(Admin.this, UsrData.class);
+                startActivity(i);
             }
         });
     }

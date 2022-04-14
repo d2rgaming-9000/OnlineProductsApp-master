@@ -43,36 +43,18 @@ import android.widget.Button;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoginActivity extends AppCompatActivity {
+public class MainMenu extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.menu);
 
-        //login ti main activity
-        Button button = (Button)findViewById(R.id.LoginButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(i);
-            }
-        });
-
-        //clicks on create account
-        TextView btn=findViewById(R.id.CreateAccount);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this,RegistrationActivity.class));
-            }
-        });
-
-        //clicks on admin
-        Button button2 = (Button)findViewById(R.id.AdminButton);
+        //clicks on info page
+        Button button2 = (Button)findViewById(R.id.info_page);
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this, Admin.class);
+                Intent i = new Intent(MainMenu.this, Info_page.class);
                 startActivity(i);
             }
         });

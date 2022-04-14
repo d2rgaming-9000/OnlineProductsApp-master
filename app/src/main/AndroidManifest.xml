@@ -10,8 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Productdetails"></activity>
+
+
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".Admin"/>
+        <activity android:name=".UsrData"/>
+        <activity android:name=".Info_page"/>
+        <activity android:name=".MainMenu"/>
+        <activity android:name=".RegistrationActivity" />
         <activity android:name=".LoginActivity">
-            <intent-filter>
+
+        <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />

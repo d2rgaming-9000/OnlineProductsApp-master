@@ -1,5 +1,11 @@
 package com.rajendra.onlineproductsapp;
 
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+import java.util.Calendar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,7 +30,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,12 +42,37 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView productCatRecycler, prodItemRecycler;
     ProductAdapter productAdapter;
 
+    private Button button;
+
+
     @Override
 
     //The recycler controllers
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+    //Button to redirect user to pages with button declaration
+        //clicks on Menu
+        Button button1 = (Button)findViewById(R.id.MainBtn);
+        button1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, MainMenu.class);
+                startActivity(i);
+            }
+        });
+
+        //clicks on info page
+        Button button2 = (Button)findViewById(R.id.infoBtn);
+        button2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, Info_page.class);
+                startActivity(i);
+            }
+        });
+
+        //contact us API
+
 
         List<ProductCategory> productCategoryList = new ArrayList<>();
         productCategoryList.add(new ProductCategory(1, "Trending"));
@@ -83,6 +113,4 @@ public class MainActivity extends AppCompatActivity {
         productAdapter = new ProductAdapter(this, productsList);
         prodItemRecycler.setAdapter(productAdapter);
     }
-
-    //Button to redirect user to pages with button declaration
 }
