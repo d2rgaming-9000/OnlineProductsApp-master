@@ -8,6 +8,20 @@ import android.database.sqlite.SQLiteDatabase;
 
 
 public class DBHelper extends SQLiteOpenHelper{
+
+	//other solution 1
+	static final String DATABASE_NAME ="ProductDB.DB";
+	static final int DATABASE_VERSION = 1;
+	
+	static final String DATABASE_TABLE = "USERS";
+	static final String USER_ID = "_ID";
+	static final String USER_NAME = "user_name";
+	static final String USER_EMAIL = "email";
+	static final String USER_PASSWORD = "pass";
+
+	private static final String CREATE_DB_QUERY = "CREATE TABLE " + DATABASE_TABLE +"( " + USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + USER_ID + "EMAIL, " + USER_EMAIL + "TEXT NOT NULL, " + USER_PASSWORD + " );";
+	
+	//other solution2
     public DBHelper(Context context)
     {
         super (context, "Userdata.db", null, 1);
@@ -15,11 +29,18 @@ public class DBHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase DB) {
-        DB.execSQL("create Table Userdetails(usrname TEXT primary key, email TEXT)");
+    //solution 1
+    db.execSQL(CREATE_DB_QUERY);
+    
+    //sol 2
+        DB.execSQL("create Table Userdetails(usrname TEXT primary key, email TEXT, pass TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase DB, int i, int i1) {
+        //sol 1
+        db.execSQL (" DROP TABLE IF EXISTS " + DATABASE_TABLE);
+        
         DB.execSQL("drop Table if exists Userdetails");
     }
 
@@ -39,12 +60,15 @@ public class DBHelper extends SQLiteOpenHelper{
             }
     }
 
-    public boolean updateuserdata(String usrname, String email)
+    public boolean updateuserdata(String usrname, String email, String pass)
     {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("usrname", usrname);
         contentValues.put("email", email);
+        contentValues.put("pass", pass);
+
+
         Cursor cursor = DB.rawQuery("select * from Userdetails where name = ?", new String[]{usrname});
 
         if(cursor.getCount()>0) {

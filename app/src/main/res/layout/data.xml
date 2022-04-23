@@ -33,6 +33,16 @@
         android:inputType="textEmailAddress"
         />
 
+    <EditText
+        android:id="@+id/Pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Pass"
+        android:textSize="24dp"
+        android:layout_below="@id/Email"
+        android:inputType="textPassword"
+        />
+
     <Button
         android:id="@+id/btnUpdate"
         android:layout_width="match_parent"
@@ -40,7 +50,7 @@
         android:textSize="24dp"
         android:text="Update Data"
         android:layout_marginTop="30dp"
-        android:layout_below="@id/Usrname"
+        android:layout_below="@id/Pass"
         />
 
     <Button

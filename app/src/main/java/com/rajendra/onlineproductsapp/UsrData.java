@@ -67,6 +67,8 @@ public class UsrData extends AppCompatActivity {
 
         usrname = findViewById(R.id.Usrname);
         email = findViewById(R.id.Email);
+        pass = findViewById(R.id.Pass);
+
 
         DB = new DBHelper(this);
 
@@ -76,6 +78,7 @@ public class UsrData extends AppCompatActivity {
                 String usrnameTXT = usrname.getText().toString();
                 String emailTXT = email.getText().toString();
                 String passTXT = pass.getText().toString();
+
 
                 Boolean checkinsertdata = DB.insertuserdata(usrnameTXT, emailTXT, passTXT);
                 if (checkinsertdata == true) {
@@ -92,8 +95,10 @@ public class UsrData extends AppCompatActivity {
             public void onClick(View view) {
                 String usrnameTXT = usrname.getText().toString();
                 String emailTXT = email.getText().toString();
+                String passTXT = pass.getText().toString();
 
-                Boolean checkupdatedata = DB.updateuserdata(usrnameTXT, emailTXT);
+
+                boolean checkupdatedata = DB.updateuserdata(usrnameTXT, emailTXT, passTXT);
                 if (checkupdatedata == true) {
                     Toast.makeText(UsrData.this, "Entry Updated", Toast.LENGTH_SHORT).show();
                 } else {
@@ -126,6 +131,8 @@ public class UsrData extends AppCompatActivity {
                 while(res.moveToNext()){
                     buffer.append("Name :" +res.getString(0)+"d");
                     buffer.append("Email :" +res.getString(1)+"/dd");
+                    buffer.append("Pass :" +res.getString(2)+"/ddd");
+
                 }
                 AlertDialog.Builder builder = new AlertDialog.Builder(UsrData.this);
                 builder.setCancelable(true);
