@@ -12,27 +12,10 @@ public class DBManager {
         context = ctx;
     }
 
-    public  DBManager open() throws{
-        dbHelper = new DBHelper(context);
-        database = dbHelper.getWritableDatabase();
-        return this;
-    }
 
     public  void close(){
         dbHelper.close();
     }
 
-    public void inset(String username, String email, String pass){
-	ContentValues contentValues = new ContentValues();
-	ContentValues.put(DBHelper.USER_NAME, username);
-	ContentValues.put(DBHelper.USER_PASSWORD, pass);
-	databse.insert(DBHelper.DATABASE_TABLE, null, contentValues);
-	
-    }
-    
-    public Cursor fetch() {
-    String [] columns = new String[] {
-    
-    	}
-    }
+ 
 }

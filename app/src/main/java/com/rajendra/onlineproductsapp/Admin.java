@@ -60,5 +60,14 @@ public class Admin extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        //clicks on products/ order details
+        Button button2 = (Button)findViewById(R.id.OrderD);
+        button2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(Admin.this, ItemsActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }

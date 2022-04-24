@@ -51,12 +51,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent i = new Intent(context, Productdetails.class);
-/*
+
+
+
+
                 Pair[] pairs = new Pair[1];
                 pairs[0] = new Pair<View, String>(holder.prodImage, "image");
                 ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation((Activity) context, pairs);
-               */ context.startActivity(i/*, activityOptions.toBundle()*/);
+                context.startActivity(i, activityOptions.toBundle());
             }
         });
 
