@@ -51,12 +51,12 @@ public class MainMenu extends AppCompatActivity {
         setContentView(R.layout.menu);
 
         //clicks on info page
-        Button button2 = (Button)findViewById(R.id.info_page);
+        /*Button button2 = (Button)findViewById(R.id.);
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i = new Intent(MainMenu.this, Info_page.class);
                 startActivity(i);
             }
-        });
+        });*/
     }
 }
